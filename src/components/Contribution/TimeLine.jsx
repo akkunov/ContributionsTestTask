@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Row} from "./Row.jsx";
 
 
@@ -17,7 +17,6 @@ const Month =  ({month}) => {
 
 
 export const Timeline = ({ months, weeks, contributions }) => {
-    console.log(months)
     return (
 	<div className="flex flex-col gap-1">
 	    <div className={`flex flex-row ml-8 space-x-[70px]`}>

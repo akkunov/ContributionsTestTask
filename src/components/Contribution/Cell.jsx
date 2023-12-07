@@ -39,17 +39,19 @@ export const Cell = ({ count, weekIndex}) => {
 	    onMouseLeave={() => mouseLeave()}
 	    className={`w-[15px] h-[15px] rounded-sm m-[2px]
 	    		relative transition-all duration-300
-	    		   hover:border-2 hover:border-zinc-500
-	    		   ${contributionShow ? `border-2 border-zinc-500` : ''}
+	    		hover:border-2 hover:border-zinc-500
+	    		${contributionShow ? `border-2 border-zinc-500` : ''}
 		    ${count.contributions > 1  && count.contributions < 9 ? `bg-[#ACD5F2]`
-		: count.contributions > 9  && count.contributions < 19 ? `bg-[#7FA8C9]`
-		    :  count.contributions > 19  && count.contributions < 29 ? `bg-[#527BA0]`
-			:  count.contributions > 29 ? `bg-[#254E77]`
-			    : `bg-gray-100` }
+		    : count.contributions > 9  && count.contributions < 19 ? `bg-[#7FA8C9]`
+			:  count.contributions > 19  && count.contributions < 29 ? `bg-[#527BA0]`
+			    :  count.contributions > 29 ? `bg-[#254E77]`
+				: `bg-gray-100` }
 	    `}
 	>
 	    {contributionShow ? (
-		<div className={`absolute z-10 ${weekIndex ==0 ? `top-4`: `bottom-4`}  flex items-center justify-center`}>
+		<div
+		    className={`absolute z-10 ${weekIndex ==0 ? `top-4`: `bottom-4`}  
+			flex items-center justify-center`}>
 		    <ContributionInfo {...count} />
 		</div>
 

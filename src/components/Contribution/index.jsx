@@ -3,15 +3,14 @@ import React from "react";
 import {Timeline} from "./TimeLine.jsx";
 import {Panel} from "./Panel.jsx";
 
-const ContributionChart = ({ data }) => {
-    moment.updateLocale('ru', {week: {dow: 0}})
-    const [currentDate, setCurrentDate] = React.useState(moment())
+const ContributionChart = ({ data, momentC }) => {
+    const [currentDate, setCurrentDate] = React.useState(momentC)
     const currentYear = currentDate.year();
-    const firstDayOfYear = moment(`${currentYear}-01-01`);
-    const lastDayOfYear = moment(`${currentYear}-12-31`);
-    const daysOfYear = [];
 
-    // Генерация случайных данных для вкладов
+    const firstDayOfYear =currentDate.startOf('year').clone()
+    const lastDayOfYear = currentDate.endOf('year').clone()
+
+    const daysOfYear = [];
     while (firstDayOfYear.isSameOrBefore(lastDayOfYear)) {
 	const currentDate = firstDayOfYear.format('YYYY-MM-DD');
 	const contributions = data[currentDate] !== undefined ? data[currentDate]: 0
@@ -34,7 +33,11 @@ const ContributionChart = ({ data }) => {
     return (
 	<div className={`flex flex-row`}>
 
-	    <Timeline weeks={weeks} months={months} contributions={daysOfYear} />
+	    <Timeline
+		weeks={weeks}
+		months={months}
+		contributions={daysOfYear}
+	    />
 	    <Panel
 		prevYear={prevYear}
 		getCurrentYear={getCurrentYear}
