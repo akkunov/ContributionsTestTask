@@ -10,24 +10,26 @@ const DaysName = {
 
 
 const Month =  ({month}) => {
-    console.log(month)
     return(
-	<div className={`w-[15px] h-[15px] m-[2px]`}>{'m'}</div>
+	<div className={`w-[15px] h-[15px] m-[2px]`}>{month}</div>
     )
 }
 
 
 export const Timeline = ({ months, weeks, contributions }) => {
+    console.log(months)
     return (
 	<div className="flex flex-col gap-1">
-	    <div className={`flex flex-row ml-8`}>
-		{months.map((month, index) => (
-		    <div className={``}>
-			<Month
-			    key={month}
-			    month={month}/>
+	    <div className={`flex flex-row ml-8 space-x-[70px]`}>
+		{[...new Set(months)].map((month, index) => (
+		    <div className={``} key={index}>
+			{
+			    <Month
+				month={month}
+			    />
+			}
 		    </div>
-		)) }
+		))}
 	    </div>
 	    {weeks.map((_, weekIndex) => (
 		<div className={`flex flex-row`}>
